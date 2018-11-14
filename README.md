@@ -20,7 +20,12 @@
     Clone Tensorflow Research Repository
     - For Detection <br/>
     We are going to use CPU Tesnsorflow.<br/>
-    I'll put all of the dependencies in a requirements.txt file and commit it later on.
+```
+# Upgrade pip first
+pip install --upgrade pip
+# Install requirements from requirements.txt
+pip install -r requirements.txt
+```
 
 ## Training 
      
@@ -42,3 +47,10 @@
   * GUI <br/>
   
     - Kivy
+    
+    
+ ## Usage of the current code
+ 
+```
+python detect_faces.py --video_file <path_to_the_video_file>
+```
