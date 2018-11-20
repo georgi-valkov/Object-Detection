@@ -54,3 +54,9 @@ pip install -r requirements.txt
 ```
 python detect_faces.py --video_file <path_to_the_video_file>
 ```
+
+### Usage of the GUI
+
+```
+python FacedetectorApp.py
+```
