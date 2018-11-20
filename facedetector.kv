@@ -1,0 +1,82 @@
+<Capture>:
+<MainLayout>:
+    id: main_layout
+    orientation: 'vertical'
+    spacing: 5
+    padding: [0, 10, 0, 10]
+    BoxLayout:
+        size_hint_y: .02
+        spacing: 2
+        ToggleButton:
+            id: vid_toggle
+            text: 'vid'
+            group: 'video_settings'
+            size_hint_x: .05
+            state: 'normal'
+            on_state: main_layout.show_load() if self.state == 'down' else 'normal'
+        ToggleButton:
+            id: cam_toggle
+            text: 'cam'
+            group: 'video_settings'
+            size_hint_x: .05
+            state: 'down'
+        Widget:
+            size_hint_x: .8
+    Capture:
+        id: video
+        size_hint_y: .5
+        text: 'Button 2'
+    BoxLayout:
+        size_hint_y: .4
+        orientation: 'vertical'
+        BoxLayout:
+            padding: [0, 0, 0, 50]
+            ScrollView:
+                id: scroll
+                size: self.size
+                do_scroll_x: True
+                do_scroll_y: False
+                bar_width: 5
+                GridLayout:
+                    id: face_grid
+                    rows: 1
+                    size_hint_x: None
+                    width: self.minimum_width
+                    spacing: 5
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 10
+            padding: [50, 15, 50, 5]
+            Button:
+                id: start_button
+                text: 'Start'
+                on_press: app.on_press_start()
+            Button:
+                id: stop_button
+                text: 'Stop'
+                on_press: app.on_press_stop()
+            Button:
+                id: pause_button
+                text: 'Pause'
+                disabled: True
+                on_press: app.on_press_pause()
+
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
